@@ -8,9 +8,9 @@ const Homes = () => {
   } = useInventory();
   const stockData = data.reduce(
     (acc, { stock, delivered }) => ({
-      totalStock: acc.totalStock + stock,
-      delivered: acc.delivered + delivered,
-      lowStock: stock <= 10 ? acc.lowStock + 1 : acc.lowStock,
+      totalStock: acc.totalStock + Number(stock),
+      delivered: acc.delivered + Number(delivered),
+      lowStock: Number(stock) <= 10 ? acc.lowStock + 1 : acc.lowStock,
     }),
     {
       totalStock: 0,
