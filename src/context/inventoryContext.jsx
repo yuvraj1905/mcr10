@@ -27,7 +27,11 @@ const InventoryContextComponent = ({ children }) => {
     const { data, filter, sortBy, includeLowStockItem } = state;
 
     if (filter !== "") {
-      finalData = data.filter(({ department }) => department === filter);
+      if (filter === "All") {
+        finalData = [...data];
+      } else {
+        finalData = data.filter(({ department }) => department === filter);
+      }
     } else finalData = [...data];
 
     if (includeLowStockItem) {
